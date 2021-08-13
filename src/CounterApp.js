@@ -20,14 +20,11 @@ const CounterApp = ({valor = 1000}) => {
     };
     return (
         <>
-        <div className="container">
             <h1>Pruebas contador</h1>
             <h4>{counter}</h4>
             <Button onClick={ handleAdd }> +1 </Button>
             <Button onClick={ handleReset }> Reset </Button>
-            <Button onClick={ handleMin }> -1 </Button>
-        </div>
-            
+            <Button onClick={ handleMin }> -1 </Button>           
         </>
        
     );
