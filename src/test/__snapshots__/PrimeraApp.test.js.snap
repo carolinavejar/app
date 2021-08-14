@@ -5,11 +5,26 @@ exports[`Pruebas de Primera App .... .test.js debe de mostrar <PrimeraApp /> cor
   <h1>
        
     Hola soy Carito
-      
+     !!!  
   </h1>
   <p>
       
     sub por defecto
+     
+  </p>
+</Fragment>
+`;
+
+exports[`Pruebas de Primera App .... .test.js debe de mostrar subtitulo de props 1`] = `
+<Fragment>
+  <h1>
+       
+    Hola soy Carito
+     !!!  
+  </h1>
+  <p>
+      
+    sub de prueba
      
   </p>
 </Fragment>
