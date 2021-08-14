@@ -1,14 +1,23 @@
 import React from 'react';
 import PrimeraApp  from '../PrimeraApp';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
+import { shallow } from 'enzyme/build';
+
+// No las toma de setupTests.js , así que las dejaré aquí por ahora
+import Enzyme from 'enzyme';
+// import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { createSerializer } from 'enzyme-to-json';
+
+Enzyme.configure({ adapter: new Adapter() });
+expect.addSnapshotSerializer( createSerializer ( { mode : 'deep' } ));
 
 describe("Pruebas de Primera App .... .test.js", ()=> {
-    test('debe retornar Hola soy Carito', () => {
+    test('debe de mostrar <PrimeraApp /> correctamente', () => {
         const saludo = `Hola soy Carito`;
-        const { getByText } = render ( < PrimeraApp saludo = { saludo } />);
+        const wrapper = shallow(<PrimeraApp saludo = {saludo} />);
 
-        expect ( getByText(saludo) ).toBeInTheDocument();
-    });
-
+        expect (wrapper).toMatchSnapshot();
+    })
+    
 })
