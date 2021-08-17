@@ -8,7 +8,7 @@ import { Button } from 'react-materialize';
 
 const CounterApp = ({valor = 1000}) => {
 
-    const [ counter, setCounter ] = useState(1);
+    const [ counter, setCounter ] = useState( valor );
     const handleAdd = () => {
         setCounter(counter + 1);
     };
