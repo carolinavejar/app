@@ -13,9 +13,14 @@ Enzyme.configure({ adapter: new Adapter() });
 expect.addSnapshotSerializer( createSerializer ( { mode : 'deep' } ));
 
 describe("Pruebas de Counter App .... .test.js", ()=> { 
+    let wrapper = shallow(<CounterApp />);
+
+    beforeEach(() => {
+        wrapper = shallow(<CounterApp />);
+    })
+
     test('debe de mostrar <CounterApp /> correctamente', () => {
-        const value = 1000;
-        const wrapper = shallow(<CounterApp valor = {value} />);
+       
         expect (wrapper).toMatchSnapshot();
     });
 
@@ -27,6 +32,30 @@ describe("Pruebas de Counter App .... .test.js", ()=> {
         console.log(`texto parrafo ${textoParrafo}`);
 
         expect (textoParrafo).toBe( `100` );
+    });
+
+    test('debe incremetar contador', () => {
+        wrapper.find('Button').at(0).simulate('click');
+
+        const counterText = wrapper.find('h4').text().trim();
+
+        expect(counterText).toBe('1001');
+    });
+
+    test('debe resetear contador', () => {
+        wrapper.find('Button').at(1).simulate('click');
+
+        const counterText = wrapper.find('h4').text().trim();
+
+        expect(counterText).toBe('1000');
     })
+
+    test('debe incremetar contador', () => {
+        wrapper.find('Button').at(2).simulate('click');
+
+        const counterText = wrapper.find('h4').text().trim();
+
+        expect(counterText).toBe('999');
+    });
 });
 
