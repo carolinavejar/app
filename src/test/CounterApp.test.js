@@ -43,11 +43,14 @@ describe("Pruebas de Counter App .... .test.js", ()=> {
     });
 
     test('debe resetear contador', () => {
+        const wrapper = shallow(<CounterApp  valor  = {500} />);
+        wrapper.find('Button').at(0).simulate('click');
+        wrapper.find('Button').at(0).simulate('click');
         wrapper.find('Button').at(1).simulate('click');
 
         const counterText = wrapper.find('h4').text().trim();
 
-        expect(counterText).toBe('1000');
+        expect(counterText).toBe('500');
     })
 
     test('debe incremetar contador', () => {
